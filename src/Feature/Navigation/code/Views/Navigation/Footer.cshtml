@@ -1,0 +1,32 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.Navigation
+@model Delicious.Feature.Navigation.Models.Footer 
+  <!-- ##### Footer Area Start ##### -->
+  <footer class="footer-area">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+          <!-- Footer Social Info -->
+          <div class="footer-social-info text-right">
+            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+          <!-- Footer Logo -->
+          <div class="footer-logo">
+            <a  href="@Model.HomeLinkUrl"><img src="@Model.ImageUrl" alt="@Model.ImageAlt"></a>
+          </div>
+          <p>
+           Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ##### Footer Area Start ##### -->

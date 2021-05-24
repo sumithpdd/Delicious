@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Foundation.BranchPresets</RootNamespace>
+    <AssemblyName>Delicious.Foundation.BranchPresets</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Net.Compilers" Version="3.8.0" />
+  </ItemGroup>
+</Project>

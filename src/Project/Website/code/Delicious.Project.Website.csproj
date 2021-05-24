@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Project.Website</RootNamespace>
+    <AssemblyName>Delicious.Project.Website</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="assets\audio\**" />
+    <Content Remove="assets\audio\**" />
+    <EmbeddedResource Remove="assets\audio\**" />
+    <None Remove="assets\audio\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="App_Config\Include\Project\Delicious.Project.Website\SiteDefinition.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="assets\css\style.css" />
+    <None Remove="assets\css\style.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\style.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Net.Compilers" Version="3.8.0" />
+  </ItemGroup>
+</Project>

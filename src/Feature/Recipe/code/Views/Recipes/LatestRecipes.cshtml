@@ -1,0 +1,54 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.Recipes
+@model Delicious.Feature.Recipes.Models.LatestRecipes
+<!-- ##### Latest Recipes Area Start ##### -->
+<section class="latest-Recipes-area section-padding-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-heading style-2">
+          <p>
+            @Html.Sitecore().Field(Templates.LatestRecipes.Fields.LatestRecipesText.ToString(), Model)
+           </p>
+          <h2>
+          @Html.Sitecore().Field(Templates.LatestRecipes.Fields.LatestRecipesTitle.ToString(), Model)</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <div class="ablums-text text-center mb-70">
+          <p>
+          @Html.Sitecore().Field(Templates.LatestRecipes.Fields.LatestRecipesInformationText.ToString(), Model)</p>
+        </div>
+      </div>
+    </div>
+
+
+    @if (Model.LatestRecipesList != null)
+
+    {
+      <div class="row">
+        <div class="col-12">
+          <div class="Recipes-slideshow owl-carousel">
+            @foreach (var Recipe in Model.LatestRecipesList)
+            {<!-- Single Album -->
+              <div class="single-album">
+                <img src="@Recipe.RecipeImageUrl" alt="@Recipe.RecipeImageAlt">
+                <div class="album-info">
+                  <a href="#">
+                    <h5>@Recipe.RecipeName</h5>
+                  </a>
+                  <p>@Recipe.RecipeTitle</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+</section>
+<!-- ##### Latest Recipes Area End ##### -->

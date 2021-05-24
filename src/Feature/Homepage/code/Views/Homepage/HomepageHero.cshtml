@@ -1,0 +1,31 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.Homepage
+@using Delicious.Foundation.SitecoreHelperExtensions 
+@model Delicious.Feature.Homepage.Models.Homepage
+
+  <!-- ##### Hero Area Start ##### -->
+<section class="hero-area">
+  <div class="hero-slides owl-carousel">
+    @foreach (var heroSlide in Model.HeroSlides)
+    {
+      <!-- Single Hero Slide -->
+    <div class="single-hero-slide bg-img" style="background-image: url(@heroSlide.HeroBackgroundImageUrl);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+              <h2 data-animation="fadeInUp" data-delay="300ms">@heroSlide.HeroTitle</h2>
+              <p data-animation="fadeInUp" data-delay="700ms">@heroSlide.HeroSubtitle</p>
+              <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">@heroSlide.HomepageHeroCTALinkText</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+     
+
+     
+    </div>
+</section>

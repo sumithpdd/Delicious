@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Foundation.Serialization</RootNamespace>
+    <AssemblyName>Delicious.Foundation.Serialization</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="App_Config\Include\Unicorn\Unicorn.DataProvider.10.1.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Unicorn" Version="4.1.4" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.PageContent
+@using Delicious.Feature.PageContent.Models
+@using Delicious.Foundation.SitecoreHelperExtensions
+@model ListWithIconsItems
+  
+<ul class="fa-ul">
+  @foreach (var li in Model.ListItems)
+  {
+    <li><span class="fa-li"><i class="fas fa-@Model.ListIcon"></i></span>@li</li>
+  }
+</ul>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Feature.Homepage</RootNamespace>
+    <AssemblyName>Delicious.Feature.Homepage</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Views\Homepage\BestRecipes.cshtml" />
+    <None Remove="Views\Homepage\BuyNow.cshtml" />
+    <None Remove="Views\Homepage\ContactUs.cshtml" />
+    <None Remove="Views\Homepage\FeaturedRecipe.cshtml" />
+    <None Remove="Views\Homepage\SmallRecipesBlog.cshtml" />
+    <None Remove="Views\Homepage\SocialFeedImages.cshtml" />
+    <None Remove="Views\Homepage\TopCategoryRecipe.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\SitecoreHelperExtensions\code\Delicious.Foundation.SitecoreHelperExtensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Net.Compilers" Version="3.8.0" />
+  </ItemGroup>
+</Project>

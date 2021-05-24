@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Feature.Blog</RootNamespace>
+    <AssemblyName>Delicious.Feature.Blog</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Views\Blog\BlogDetails.cshtml" />
+    <None Remove="Views\Blog\BlogLanding.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\SitecoreHelperExtensions\code\Delicious.Foundation.SitecoreHelperExtensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Net.Compilers" Version="3.8.0" />
+  </ItemGroup>
+</Project>

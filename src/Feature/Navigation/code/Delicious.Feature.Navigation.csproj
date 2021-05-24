@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Delicious.Feature.Navigation</RootNamespace>
+    <AssemblyName>Delicious.Feature.Navigation</AssemblyName>
+    <SitecoreRoleType>website</SitecoreRoleType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\SitecoreHelperExtensions\code\Delicious.Foundation.SitecoreHelperExtensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Net.Compilers" Version="3.8.0" />
+  </ItemGroup>
+</Project>

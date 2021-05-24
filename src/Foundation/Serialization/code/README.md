@@ -1,0 +1,1 @@
+# Delicious.Foundation.Serialization.csproj

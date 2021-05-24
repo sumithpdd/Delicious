@@ -1,0 +1,45 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.Homepage
+@using Delicious.Foundation.SitecoreHelperExtensions
+@model Delicious.Feature.Homepage.Models.Homepage
+
+<!-- ##### Best Receipe Area Start ##### -->
+<section class="best-receipe-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-heading">
+          <h3>@Model.BestRecipesTitle</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Single Best Receipe Area -->
+
+      @foreach (var recipe in Model.BestRecipesList)
+      {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-best-receipe-area mb-30">
+            <img src="@recipe.RecipeAbscractImageUrl" alt="">
+            <div class="receipe-content">
+              <a href="@recipe.RecipeURL">
+                <h5>@recipe.RecipeName</h5>
+              </a>
+              <div class="ratings">
+                @for(int i= 0; i <= recipe.RecipeRating; i++)                {
+                  <i class="fa fa-star" aria-hidden="true"></i>                 
+                }
+                @for(int i = 0; i <= recipe.RecipeRating -5; i++)
+                {
+                     <i class="fa fa-star-o" aria-hidden="true"></i>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      } 
+  </div>
+</section>
+<!-- ##### Best Receipe Area End ##### -->

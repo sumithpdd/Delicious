@@ -1,0 +1,28 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Presentation
+@using Delicious.Feature.Homepage
+@using Delicious.Foundation.SitecoreHelperExtensions
+@model Delicious.Feature.Homepage.Models.Homepage
+<!-- ##### Top Category Area Start ##### -->
+<section class="top-catagory-area section-padding-80-0">
+  <div class="container">
+    <div class="row">
+      @foreach (var recipe in Model.TopCategoryRecipe)
+      {
+        <!-- Top Category Area -->
+        <div class="col-12 col-lg-6">
+          <div class="single-top-catagory">
+            <img src="@recipe.RecipeAbscractImageUrl" alt="">
+            <!-- Content -->
+            <div class="top-cta-content">
+              <h3>@recipe.RecipeName</h3>
+              <h6>@recipe.RecipeAbscractText</h6>
+              <a href="@recipe.RecipeURL" class="btn delicious-btn">See Full Receipe</a>
+            </div>
+          </div>
+        </div>
+      } 
+    </div>
+   </div>
+</section>
+<!-- ##### Top Category Area End ##### -->
