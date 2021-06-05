@@ -13,5 +13,7 @@ namespace Delicious.Feature.Homepage.Models
     public string HeroBackgroundImageUrl { get; set; }
     public string HomepageHeroCTALink { get; set; }
     public string HomepageHeroCTALinkText { get; set; }
+
+    public string RecipeID { get; set; }
   }
 }

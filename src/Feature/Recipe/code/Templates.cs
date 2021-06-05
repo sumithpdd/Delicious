@@ -16,7 +16,8 @@ namespace Delicious.Feature.Recipes
 
         public static readonly ID RecipeDate = new ID("{A7C1C9F9-A5CD-474B-B55E-94A9639AA769}");
         public static readonly ID RecipeId = new ID("{9853877B-111D-42F8-8249-EF0147FF3BD9}");
-   public static readonly ID RecipeDescription = new ID("{5674CCAC-D31C-4B93-A524-417754CD6813}");
+
+        public static readonly ID RecipeDescription = new ID("{5674CCAC-D31C-4B93-A524-417754CD6813}");
      
         public static readonly ID RecipeType = new ID("{F329E9D8-A72B-4610-BBA0-7DA76C8FAA9F}");
         public static readonly ID ChefAuthor = new ID("{2FF20AFA-3462-4B2E-82E1-38263022A322}");
@@ -67,6 +68,17 @@ namespace Delicious.Feature.Recipes
         public static readonly ID EventDate = new ID("{F5167D16-A419-43D9-8A18-CE16AB1E3C5D}");
         public static readonly ID IsFeaturedEvent = new ID("{BBCEA4F9-AAD6-45ED-B7E6-02E6A6AF8FCC}");
         public static readonly ID EventRecipes = new ID("{3E305C26-AB5C-4DBA-9396-1E4D1FDF4A05}");
+      }
+    }
+
+    public static class RecipeIngredientQuantity
+    {
+      public static class Fields
+      {
+        public static readonly ID RecipeIngredient = new ID("{AE34C2EE-C883-45F2-BD44-2997016BE1F0}");
+        public static readonly ID IngredientQuantity = new ID("{2939FAA0-CC64-4460-9433-FCD7E38DDF44}");
+        public static readonly ID IngredientQuantityCalories = new ID("{1DA8B691-D434-4EDE-A29B-E56126DE119D}");
+        public static readonly ID RecipeIngredientText = new ID("{5BF29301-026C-4898-ACA5-97E76379418D}");
       }
     }
   }

@@ -11,6 +11,7 @@ using Sitecore.Diagnostics;
 using Delicious.Feature.Homepage;
 using HomepageModel = Delicious.Feature.Homepage.Models  ;
 using Delicious.Feature.Homepage.Models;
+using System.Xml;
 
 namespace Delicious.Feature.Homepage.Controllers
 {
@@ -154,19 +155,74 @@ namespace Delicious.Feature.Homepage.Controllers
     Item[] heroItems = heroListField.GetItems();
     List<Hero> heroSlides = new List<Hero>();
 
+
+
     if (heroItems != null && heroItems.Count() > 0)
     {
       foreach(Item heroSlideItem in heroItems)
       {
         Hero hero = new Hero();
-        Item heroItem = Sitecore.Context.Database.GetItem(heroSlideItem.ID);
 
-        hero.HeroTitle = heroItem.Fields[Templates.Hero.Fields.HeroTitle.ToString()].Value;
+          //Link - Droplink Field
+          ReferenceField recipeLink = heroSlideItem.Fields[Templates.Hero.Fields.RecipeLink];
+          Item recipeItem = recipeLink != null
+            ?  recipeLink.TargetItem
+            : null;
+
+
+          Item heroItem = Sitecore.Context.Database.GetItem(heroSlideItem.ID);
+          if (recipeItem != null)
+          {
+
+            hero.HeroTitle = recipeItem.Fields[Templates.Recipe.Fields.RecipName.ToString()].Value;
+            ImageField heroImage = recipeItem.Fields[Templates.Recipe.Fields.RecipeAbscractImage];
+            XmlDocument doc = new XmlDocument();
+            //doc.LoadXml("<image stylelabs-content-id=\"29865\" thumbnailsrc=\"https://cmp-connector-400-r147.stylelabsqa.com/api/gateway/29865/thumbnail\" src=\"https://cmp-connector-400-r147.stylelabsqa.com/api/public/content/19c8d2004811433d931cc13c1d0b138a?v=638d2b04\" mediaid=\"\" stylelabs-content-type=\"Image\" alt=\"can-of-coke.jpg\" height=\"879\" width=\"1200\" />");
+            doc.LoadXml(heroImage.Value);
+
+            XmlElement root = doc.DocumentElement;
+
+            string src = root.Attributes["src"] != null ? root.Attributes["src"].Value : string.Empty;
+
+            if (string.IsNullOrEmpty(src))
+            {
+              if (heroImage != null && heroImage.MediaItem != null)
+                hero.HeroBackgroundImageUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(heroImage.MediaItem);
+              
+            }
+            else
+            {
+              hero.HeroBackgroundImageUrl = src;
+
+            }
+             
+
+           
+
+          }
+          else
+          {
+            hero.HeroTitle = heroItem.Fields[Templates.Hero.Fields.HeroTitle.ToString()].Value;
+            ImageField heroImage = heroItem.Fields[Templates.Hero.Fields.HeroBackgroundImage];
+            hero.HeroBackgroundImageUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(heroImage.MediaItem);
+
+          }
           hero.HeroSubtitle = heroItem.Fields[Templates.Hero.Fields.HeroSubtitle.ToString()].Value;
     
-             ImageField heroImage = heroItem.Fields[Templates.Hero.Fields.HeroBackgroundImage];
-          hero.HeroBackgroundImageUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(heroImage.MediaItem);
           hero.HomepageHeroCTALinkText = heroItem.Fields[Templates.Hero.Fields.HomepageHeroCTALinkText.ToString()].Value;
+          
+           LinkField HomepageHeroCTALink = heroItem.Fields[Templates.Hero.Fields.HomepageHeroCTALink.ToString()];
+
+          if(HomepageHeroCTALink.LinkType.ToLower() =="internal" && HomepageHeroCTALink.TargetItem != null)
+          {
+            Item internalItem = Sitecore.Context.Database.GetItem(HomepageHeroCTALink.TargetID);
+            hero.HomepageHeroCTALink = Sitecore.Links.LinkManager.GetItemUrl(internalItem);
+          }
+          else
+          {
+            hero.HomepageHeroCTALink = HomepageHeroCTALink.Url;
+          }
+          
 
           //hero.HeroBackgroundImageUrlAlt = heroImage.Alt;
 

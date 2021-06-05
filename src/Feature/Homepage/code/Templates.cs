@@ -55,8 +55,10 @@ namespace Delicious.Feature.Homepage
         public static readonly ID HeroSubtitle = new ID("{1F7BA84F-C51E-4E00-97BB-6AF81226E099}");
         public static readonly ID HomepageHeroCTALink = new ID("{48B24967-7AE3-48BE-BC6E-D2415D4797FF}");
         public static readonly ID HomepageHeroCTALinkText = new ID("{D6B08588-FFBB-400D-BC84-854D48432AE9}");
+        public static readonly ID RecipeLink = new ID("{FAC3FF83-577E-44C4-87B2-92EC4421D098}");
+        
 
-      }
+    }
     }
     public static class TopCategoryRecipe
     {

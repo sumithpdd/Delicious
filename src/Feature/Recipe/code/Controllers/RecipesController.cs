@@ -162,5 +162,53 @@ namespace Delicious.Feature.Recipes.Controllers
 
       return View(featuredRecipes);
     }
+
+
+    public ActionResult RecipeInfo()
+    {
+      if (Sitecore.Context.Item == null)
+      {
+        return null;
+      }
+
+      var dataSourceId = Sitecore.Context.Item.ID.ToString();
+      Assert.IsNotNullOrEmpty(dataSourceId, "dataSourceId is null or empty");
+      var item = Sitecore.Context.Database.GetItem(dataSourceId);
+      if (item == null)
+      {
+        return null;
+      }
+
+      Recipe recipe = new Recipe();
+
+      recipe.RecipeItem = item;
+
+       MultilistField ingredients = item.Fields[Templates.Recipe.Fields.MainIngredients];
+      Item[] ingredientsItems = ingredients.GetItems();
+
+      List<RecipeIngredientQuantity> recipeIngredientQuantityList = new List<RecipeIngredientQuantity>();
+
+      if (ingredientsItems != null && ingredientsItems.Count() > 0)
+      {
+        foreach (Item i in ingredientsItems)
+        {
+
+          RecipeIngredientQuantity recipeIngredientQuantity = new RecipeIngredientQuantity();
+          Item RecipeIngredientItem = Sitecore.Context.Database.GetItem(i.ID);
+          recipeIngredientQuantity.RecipeIngredient = RecipeIngredientItem.Fields[Templates.RecipeIngredientQuantity.Fields.RecipeIngredient.ToString()].Value;
+          recipeIngredientQuantity.IngredientQuantity = RecipeIngredientItem.Fields[Templates.RecipeIngredientQuantity.Fields.IngredientQuantity.ToString()].Value;
+
+
+          recipeIngredientQuantity.IngredientQuantityCalories = RecipeIngredientItem.Fields[Templates.RecipeIngredientQuantity.Fields.IngredientQuantityCalories.ToString()].Value;
+          recipeIngredientQuantity.RecipeIngredientText = RecipeIngredientItem.Fields[Templates.RecipeIngredientQuantity.Fields.RecipeIngredientText.ToString()].Value;
+
+          recipeIngredientQuantityList.Add(recipeIngredientQuantity);
+        }
+      } 
+
+      recipe.Ingredients = recipeIngredientQuantityList;
+
+      return View(recipe);
+    }
   }
 }
